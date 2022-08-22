@@ -1,0 +1,55 @@
+emi_balt_t <- data %>% group_by(type, year) %>% filter(fips == "24510") %>% 
+  summarise(total = sum(Emissions))
+  
+ggplot(emi_balt_t, aes(x = factor(year), 
+                   y = total, fill = type, label = round(total))) + 
+  geom_bar(stat = "identity") + facet_grid(. ~ type) + 
+  ggtitle("Total PM2.5 Emissions in Baltimore City, Maryland") + 
+  xlab("Year")+ ylab("PM2.5 Emissions in Tons") +
+  theme_classic() + theme(plot.title = element_text(hjust = 0.5))
+ 
+scale_fill_brewer(palette = "Set1")
+## <ggproto object: Class ScaleDiscrete, Scale, gg>
+##     aesthetics: fill
+##     axis_order: function
+##     break_info: function
+##     break_positions: function
+##     breaks: waiver
+##     call: call
+##     clone: function
+##     dimension: function
+##     drop: TRUE
+##     expand: waiver
+##     get_breaks: function
+##     get_breaks_minor: function
+##     get_labels: function
+##     get_limits: function
+##     guide: legend
+##     is_discrete: function
+##     is_empty: function
+##     labels: waiver
+##     limits: NULL
+##     make_sec_title: function
+##     make_title: function
+##     map: function
+##     map_df: function
+##     n.breaks.cache: NULL
+##     na.translate: TRUE
+##     na.value: NA
+##     name: waiver
+##     palette: function
+##     palette.cache: NULL
+##     position: left
+##     range: <ggproto object: Class RangeDiscrete, Range, gg>
+##         range: NULL
+##         reset: function
+##         train: function
+##         super:  <ggproto object: Class RangeDiscrete, Range, gg>
+##     rescale: function
+##     reset: function
+##     scale_name: brewer
+##     train: function
+##     train_df: function
+##     transform: function
+##     transform_df: function
+##     super:  <ggproto object: Class ScaleDiscrete, Scale, gg>
